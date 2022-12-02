@@ -1,8 +1,55 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@model List<BookStore.Model.BookModel>
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome to BookStore</h1>
+        <p class="lead text-muted">
+            Bookselling is the commercial trading of books which is the retail and distribution end of the publishing process.
+            People who engage in bookselling are called booksellers, bookdealers, bookpeople, bookmen, or bookwomen.
+            The founding of libraries in c.300 BC .
+        </p>
+        <p>
+            <a href="#" class="btn btn-primary my-2">
+                Search Books
+            </a>
+        </p>
+    </div>
+</section>
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var i in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"></svg>
+                        <div class="card-body">
+                            <h3 class="card-title">@i.Title</h3>
+                            <p class="card-text">
+                                @i.Discription
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="GetBook/@i.ID" class="btn btn-sm btn-outline-secondary">
+                                        View Details
+                                    </a>
+                                </div>
+                                <div class="text-muted">@i.Author</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section IndexScript
+{
+    <script>
+        $(document).ready(function () {
+        })
+    </script>
 }
 
-<h1>Index</h1>
-
-<img src="~/Images/WIN_20201115_00_33_37_Pro (2).jpg" />

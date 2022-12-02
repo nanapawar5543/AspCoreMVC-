@@ -1,8 +1,4 @@
 ﻿@model List<BookStore.Model.BookModel>
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -13,6 +9,7 @@
     <script src="~/lib/jquery/jquery.min.js"></script>
 </head>
 <body>
+    <h2 style="text-align:center;">Book Store</h2><br />
     <form method="post" action="SearchBooks">
         <input type="text" name="title" placeholder="Title" /><input type="text" name="author" placeholder="Author" />
         <button type="submit" class="btn btn-primary">Search</button>

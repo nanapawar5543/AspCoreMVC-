@@ -24,12 +24,12 @@ namespace BookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){ID=1,Author="Ashish",Title="How to be Rich"},
-                new BookModel(){ID=2,Author="Amar",Title="Detais of Cload"},
-                new BookModel(){ID=3,Author="Sagar",Title="How to be perfect farmer"},
-                new BookModel(){ID=4,Author="Nilesh",Title="All about Azure"},
-                new BookModel(){ID=5,Author="Mahesh",Title="About Family"},
-                new BookModel(){ID=6,Author="Mahesh",Title="Be a Good man"}
+                new BookModel(){ID=1,Author="Ashish",Title="How to be Rich",Discription="This is Discription for How to be Rich ",Category="Buissiness",Language="English",NoofPages=1241},
+                new BookModel(){ID=2,Author="Amar",Title="Detais of Cload",Discription="This is Discription for Detais of Cload",Category="Buissiness",Language="English",NoofPages=1241},
+                new BookModel(){ID=3,Author="Sagar",Title="perfect farmer",Discription="This is Discription fo How to be perfect farmer",Category="Buissiness",Language="English",NoofPages=1241},
+                new BookModel(){ID=4,Author="Nilesh",Title="All about Azure",Discription="This is Discription for All about Azure",Category="Buissiness",Language="English",NoofPages=1241},
+                new BookModel(){ID=5,Author="Mahesh",Title="About Family",Discription="This is Discription for About Family",Category="Buissiness",Language="English",NoofPages=1241},
+                new BookModel(){ID=6,Author="Mahesh",Title="Be a Good man",Discription="This is Discription for Be a Good man",Category="Buissiness",Language="English",NoofPages=1241},
             };
         }
     }

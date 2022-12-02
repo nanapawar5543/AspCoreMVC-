@@ -20,8 +20,8 @@ namespace BookStore.Controllers
             var books = br.LisOfBooks();
             return View(books);
         }
-        [Route("Book")]
-        public ActionResult Book(int id)
+        [Route("GetBook/{id}")]
+        public ActionResult GetBook(int id)
         {
             var book = br.Book(id);
             return View(book);
@@ -33,6 +33,20 @@ namespace BookStore.Controllers
             var books = br.SearchBooks(title    , author);
             return View("GetAllBooks", books);
         }
-        
+        public ActionResult Index()
+        { 
+            var books = br.LisOfBooks();
+            return View(books);
+        }
+        [Route("About")]
+        public ActionResult About()
+        {
+            return View();
+        }
+        [Route("Contactus")]
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }
