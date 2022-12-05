@@ -4,38 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookStore.Repository;
+using BookStore.Model;
 
 namespace BookStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly BookRepository br=null;
-        public HomeController()
+        private readonly BookRepository _bookRepository = null;
+        public HomeController(BookRepository bookRepository)
         {
-            br = new BookRepository();
+            _bookRepository = bookRepository;
         }
-        [Route("GetAllBooks")]
-        public ActionResult GetAllBooks() 
-        {
-            var books = br.LisOfBooks();
-            return View(books);
-        }
-        [Route("GetBook/{id}")]
-        public ActionResult GetBook(int id)
-        {
-            var book = br.Book(id);
-            return View(book);
-        }
-        [HttpPost]
-        [Route("SearchBooks")]
-        public ActionResult SerchBooks(string title="" , string author="")
-        {
-            var books = br.SearchBooks(title    , author);
-            return View("GetAllBooks", books);
-        }
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         { 
-            var books = br.LisOfBooks();
+            var books = await _bookRepository.LisOfBooks();
             return View(books);
         }
         [Route("About")]
