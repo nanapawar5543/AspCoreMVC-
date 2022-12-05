@@ -30,5 +30,9 @@ namespace BookStore.Controllers
         {
             return View();
         }
+        public ActionResult ContactUs2222()
+        {
+            return View();
+        }
     }
 }
