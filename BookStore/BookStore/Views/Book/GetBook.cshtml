@@ -1,4 +1,4 @@
-﻿@model BookStore.Model.BookModel
+﻿@model BookModel
 
 <div class="container">
     <h3 class="display-4">Book Details</h3>
@@ -12,13 +12,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="~/Images/alexander-grey-eMP4sYPJ9x0-unsplash.jpg" class="d-block w-100" alt="First side">
+                        <img src="~/Images/alexander-grey-eMP4sYPJ9x0-unsplash.jpg" class="d-block w-100" alt="First side" asp-append-version="true" />
                     </div>
                     <div class="carousel-item">
-                        <img src="~/Images/annelies-geneyn-bhBONc07WsI-unsplash.jpg" class="d-block w-100" alt="Second side">
+                        <img src="~/Images/annelies-geneyn-bhBONc07WsI-unsplash.jpg" class="d-block w-100" alt="Second side" asp-append-version="true" />
                     </div>
                     <div class="carousel-item">
-                        <img src="~/Images/elisa-calvet-b-S3nUOqDmUvc-unsplash (1).jpg" class="d-block w-100" alt="Third side">
+                        <img src="~/Images/elisa-calvet-b-S3nUOqDmUvc-unsplash (1).jpg" class="d-block w-100" alt="Third side" asp-append-version="true" />
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -34,19 +34,19 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>@Model.Title</h1>
+                    <h1>@Model.BookTitle</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-primary">
                     <span class="label label-primary">By:</span>
-                    <span class="monospaced">@Model.Author</span>
+                    <span class="monospaced">@Model.BookAuthor</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <p class="description">
-                        @Model.Discription
+                        @Model.BookDescription
                     </p>
                 </div>
             </div>
@@ -59,9 +59,9 @@
             </div>
             <hr />
             <ul class="list-group">
-                <li class="list-group-item"><span class="font-weight-bold">Category -</span>@Model.Category </li>
+                <li class="list-group-item"><span class="font-weight-bold">Category -</span>@Model.BookCategory </li>
                 <li class="list-group-item"><span class="font-weight-bold">Total pages -</span>@Model.NoofPages</li>
-                <li class="list-group-item"><span class="font-weight-bold">Language  -</span>@Model.Language </li>
+                <li class="list-group-item"><span class="font-weight-bold">Language  -</span>@Model.BookLanguage </li>
             </ul>
         </div>
     </div>
@@ -76,7 +76,7 @@
                     <div class="card-body">
                         <h3 class="card-title">Title</h3>
                         <p class="card-text">
-                          Discription
+                                Description
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

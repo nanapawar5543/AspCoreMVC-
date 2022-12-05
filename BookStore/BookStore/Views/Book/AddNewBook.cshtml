@@ -1,0 +1,79 @@
+﻿@model BookModel
+
+<style>
+    .form-group span{
+        color:red;
+    }
+</style>
+<div class="container">
+    <h3 class="display-4">Add New Book</h3>
+    @if(ViewBag.isSuccess==true)
+    {
+        <hr />
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> New book added successfully.<br/>
+            Please click <a asp-controller="Book" asp-action="getbook" asp-route-id="@ViewBag.bookid">Here</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <form method="post" asp-action="AddNewBook" data-ajax="true" data-ajax-complete="MyComplete" data-ajax-success="MySuccess" data-ajax-failure="MyFailure">
+        <div class="form-group">
+            <label asp-for="BookTitle"></label>
+            <input asp-for="BookTitle" class="form-control" />
+            <span asp-validation-for="BookTitle"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BookAuthor"></label>
+            <input asp-for="BookAuthor" class="form-control" />
+            <span asp-validation-for="BookAuthor"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BookDescription"></label>
+            <textarea asp-for="BookDescription" class="form-control"></textarea>
+            <span asp-validation-for="BookDescription"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LanguageID"></label>
+            <select asp-for="LanguageID" class="form-control" asp-items="ViewBag.Language">
+                    
+            </select>
+            <span asp-validation-for="LanguageID"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BookCategory"></label>
+            <select asp-for="BookCategory" class="form-control" asp-items="ViewBag.Categories">
+            </select>
+            <span asp-validation-for="BookCategory"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NoofPages"></label>
+            <input asp-for="NoofPages" class="form-control" />
+            <span asp-validation-for="NoofPages"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add book" class="btn btn-primary" />
+        </div>
+    </form> 
+</div>
+
+@section Script{
+    <script>
+        function Mycomplete()
+        {
+            alert("This massage is from MyComplete");
+        }
+        function MySuccess()
+        {
+            alert("This massage is from MySuccess ");
+        }
+        function MyFailure() {
+            alert("This massage is from MyFailure ");
+        }
+    </script>
+}
+
+
+
+

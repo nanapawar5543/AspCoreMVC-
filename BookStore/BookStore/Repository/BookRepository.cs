@@ -3,34 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookStore.Model;
+using BookStore.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Repository
 {
     public class BookRepository
     {
-        public List<BookModel> LisOfBooks()
+        private readonly BookstoreContext _context = null;
+        public BookRepository(BookstoreContext context)
         {
-            return datasource();
+            _context = context;
         }
-        public BookModel Book(int id)
+        public async Task<int> AddNewBook(BookModel bookModel)
         {
-            return datasource().Where(temp => temp.ID == id).FirstOrDefault(); ;
-        }
-        public List<BookModel> SearchBooks(string title = "",string author="")
-        {
-            return datasource().Where(temp => temp.Title.Contains(title) && temp.Author.Contains(author)).ToList();
-        }
-        private List<BookModel> datasource()
-        {
-            return new List<BookModel>()
+            var book = new Books()
             {
-                new BookModel(){ID=1,Author="Ashish",Title="How to be Rich",Discription="This is Discription for How to be Rich ",Category="Buissiness",Language="English",NoofPages=1241},
-                new BookModel(){ID=2,Author="Amar",Title="Detais of Cload",Discription="This is Discription for Detais of Cload",Category="Buissiness",Language="English",NoofPages=1241},
-                new BookModel(){ID=3,Author="Sagar",Title="perfect farmer",Discription="This is Discription fo How to be perfect farmer",Category="Buissiness",Language="English",NoofPages=1241},
-                new BookModel(){ID=4,Author="Nilesh",Title="All about Azure",Discription="This is Discription for All about Azure",Category="Buissiness",Language="English",NoofPages=1241},
-                new BookModel(){ID=5,Author="Mahesh",Title="About Family",Discription="This is Discription for About Family",Category="Buissiness",Language="English",NoofPages=1241},
-                new BookModel(){ID=6,Author="Mahesh",Title="Be a Good man",Discription="This is Discription for Be a Good man",Category="Buissiness",Language="English",NoofPages=1241},
+                BookAuthor = bookModel.BookAuthor,
+                BookTitle = bookModel.BookTitle,
+                BookDescription = bookModel.BookDescription,
+                LanguageID = bookModel.LanguageID,
+                
+                BookCategory = bookModel.BookCategory,
+                NoofPages = bookModel.NoofPages.HasValue?bookModel.NoofPages.Value:0,
+                CreatedOn = DateTime.Now
             };
+            await _context.Books.AddAsync(book);
+            await _context.SaveChangesAsync();
+            return book.BookID;
         }
+        public async Task<List<BookModel>> LisOfBooks()
+        {
+            return await _context.Books.Select(book=>new BookModel()
+            {
+                BookID = book.BookID,
+                BookAuthor = book.BookAuthor,
+                BookTitle = book.BookTitle,
+                BookDescription = book.BookDescription,
+                LanguageID = book.LanguageID,
+                BookLanguage = book.language.Name,
+                BookCategory = book.BookCategory,
+                NoofPages = book.NoofPages,
+                CreatedOn = book.CreatedOn
+            }).ToListAsync();
+        }
+        public async Task<BookModel> Book(int id)
+        {
+            return await _context.Books.Where(temp => temp.BookID == id).Select(book => new BookModel()
+            {
+                BookID = book.BookID,
+                BookAuthor = book.BookAuthor,
+                BookTitle = book.BookTitle,
+                BookDescription = book.BookDescription,
+                LanguageID = book.LanguageID,
+                BookLanguage = book.language.Name,
+                BookCategory = book.BookCategory,
+                NoofPages = book.NoofPages,
+                CreatedOn = book.CreatedOn
+            }).FirstOrDefaultAsync();
+        }
+        public List<BookModel> SearchBooks(string title = "", string author = "")
+        {
+            var books = new List<BookModel>();
+            return books;
+        }
+        
     }
 }

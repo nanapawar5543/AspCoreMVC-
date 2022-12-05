@@ -31,7 +31,7 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a asp-controller="Book" asp-action="GetBook" asp-route-id="@i.BookID" class="btn btn-sm btn-outline-secondary">
+                                    <a asp-controller="Home" asp-action="GetBook" asp-route-id="@i.BookID" class="btn btn-sm btn-outline-secondary">
                                         View Details
                                     </a>
                                 </div>
@@ -46,7 +46,7 @@
 </div>
 
 @section IndexScript
-{
+    {
     <script>
         $(document).ready(function () {
         })
